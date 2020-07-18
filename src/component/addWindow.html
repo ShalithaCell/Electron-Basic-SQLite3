@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../libs//boostrap//bootstrap.min.css">
+
+  <!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
+<script src="../../scripts//jquery.min.js"></script>
+  <script src="../../scripts//popper.min.js"></script>
+  <script src="../../libs/boostrap/bootstrap.min.js"></script> 
+
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+
+  
+</head>
+<body>
+
+    <div class="p-5">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="button" onclick="onSubmit(event)" class="btn btn-primary">Submit</button>
+    </div>
+
+    <script>
+
+        const electron = require('electron');
+        const { ipcRenderer } = electron; 
+
+        function init() {
+          // add global variables to your web page
+          window.isElectron = true;
+          window.ipcRenderer = ipcRenderer;
+          console.log('okk');
+        }
+
+        init();
+      
+
+      function onSubmit(e){
+        e.preventDefault();
+
+        
+
+          const email = $('#exampleInputEmail1').val();
+          const password = $('#exampleInputPassword1').val();
+
+          if (window.isElectron) {
+            window.ipcRenderer.send('item:add', email);
+            window.ipcRenderer.on('pong', (event, msg) => console.log(msg))
+          }
+
+          
+      }
+    </script>
+
+</body>
+</html>

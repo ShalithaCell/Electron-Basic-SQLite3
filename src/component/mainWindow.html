@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../libs//boostrap//bootstrap.min.css">
+  <!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
+<script src="../../scripts//jquery.min.js"></script>
+  <script src="../../scripts//popper.min.js"></script>
+  <script src="../../libs/boostrap/bootstrap.min.js"></script> 
+
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <ui id="uiID">
+
+    </ui>
+  </div>
+</div>
+
+</body>
+
+<script>
+
+  const electron = require('electron');
+  const { ipcRenderer } = electron; 
+
+  function init() {
+    // add global variables to your web page
+    window.isElectron = true;
+    window.ipcRenderer = ipcRenderer;
+    console.log('okk');
+  }
+
+  init();
+
+  window.ipcRenderer.on('item:add', function(e, item){
+    $("#uiID").append('<li>'+item+'</li>');
+  });
+
+
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "sqlitetest",
+  "version": "1.0.0",
+  "description": "Sqlite test desktop application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Shalitha",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^9.1.0",
+    "sequelize": "^6.3.3",
+    "sqlite3": "^5.0.0"
+  },
+  "directories": {
+    "buildResources": "build",
+    "app": "build"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
