@@ -9,7 +9,7 @@
   "author": "Shalitha",
   "license": "MIT",
   "dependencies": {
-    "electron": "^9.1.0",
+    "electron": "^11.5.0",
     "sequelize": "^6.3.3",
     "sqlite3": "^5.0.0"
   },
